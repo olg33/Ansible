@@ -1,0 +1,17 @@
+-
+  name: Upgrading Remote VMs
+  hosts: ELK_LAB_1
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Update apt repo and cache on all boxes, please wait....
+      become: true
+      become_user: root
+      apt:
+        update_cache: true
+        force_apt_get: true
+        upgrade: true
+        cache_valid_time: 3600
+
+
+

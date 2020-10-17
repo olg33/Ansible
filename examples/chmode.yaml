@@ -1,0 +1,14 @@
+-
+ name: Command Test
+ hosts: VMs_Server_C
+ tasks:
+     - name: Change Mode
+       become: true
+       become_user: root
+       file:
+        path: /etc/network/interfaces.bak
+        mode: '0777'
+     - name: Backup file
+       become: true
+       become_user: root 
+       command: mv /etc/network/interfaces.bak /etc/network/interfaces.bak2       

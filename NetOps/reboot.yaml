@@ -1,0 +1,15 @@
+-
+  name: Upgrading Remote VMs
+  hosts: mir.enk.lab
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Rebooting, please wait....
+      become: true
+      become_user: root
+      reboot:
+
+    - name: Successful reboot! Pinging server......
+      ping:  
+
+

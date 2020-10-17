@@ -1,0 +1,144 @@
+
+---
+all:
+  hosts:
+    Server_VM_A:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.22"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!
+    Server_VM_B:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.22"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    Server_VM_C:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.22"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.22"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Teleport:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.46"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    Laptop_VM_A:
+      ansible_connection: ssh
+      ansible_host: "10.151.213.11"
+      ansible_user: oscar
+      ansible_ssh_pass: huemac86  
+    Oscar_VM_A:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.31"
+      ansible_user: oscar
+      ansible_ssh_pass: huemac86 
+    BW_Test_Vessel_ATL_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.128.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel_FUC_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.128.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!   
+    BW_Test_Vessel_STN_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.136.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel_HTP_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.136.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!    
+    BW_Test_Vessel_NIT_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.140.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!    
+    BW_Test_Vessel_SYD_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.152.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    BW_Test_Vessel_NAPA_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.154.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel_HOL_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.130.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    BW_Test_Vessel_HOL_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.130.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel_HOL_03:
+      ansible_connection: ssh
+      ansible_host: "172.20.132.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel_HOL_04:
+      ansible_connection: ssh
+      ansible_host: "172.20.132.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    BW_Test_Vessel_HOL_05:
+      ansible_connection: ssh
+      ansible_host: "172.20.134.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    BW_Test_Vessel_HOL_06:
+      ansible_connection: ssh
+      ansible_host: "172.20.134.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!    
+    BW_Test_Vessel_RAI_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.142.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel_RAI_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.142.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    BW_Test_Vessel_SAN_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.144.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    BW_Test_Vessel_SAN_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.146.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!
+    BW_Test_Vessel_SAN_03:
+      ansible_connection: ssh
+      ansible_host: "172.20.146.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!    
+    BW_Test_Vessel_SAN_04:
+      ansible_connection: ssh
+      ansible_host: "172.20.148.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!
+    BW_Test_Vessel_BRW_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.156.121"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!    
+    BW_Test_Vessel_BRW_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.156.249"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!        

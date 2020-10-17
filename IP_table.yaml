@@ -1,0 +1,50 @@
+-
+ name: Insert static routes for new remote 
+
+ hosts: Server_VM_A
+ tasks:
+     -
+      name: 'Add Native IP config.'
+      blockinfile:
+          path: /etc/netplan/01-network-manager-all.yaml 
+          insertafter: "dhcp4:"
+          marker: "#Native Interface Section"
+          block: |1   
+                 #addresses: [172.20.136.250/25]
+                 #gateway4: 172.20.136.129
+                 #nameservers:
+                    #addresses: [216.7.159.133,8.8.8.8]
+     -
+      name: 'Add IP routes of remotes'
+      blockinfile:
+          path: /etc/netplan/01-network-manager-all.yaml 
+          insertafter: "#Subinterfaces"
+          marker: "#Static Routes Section"
+          block: |1      
+               ens256:
+                 addresses: [10.110.21.60/26]
+                 routes:
+                    #REMOTES_on_MTNMGT
+                     - to: 10.110.21.0/26
+                       via: 10.110.21.1
+                     - to: 10.152.144.0/24
+                       via: 10.110.21.1
+               ens224:
+                 addresses: [10.110.22.124/26]
+                 routes:
+                    #REMOTES_on_MONITORING
+                     - to: 10.110.22.64/26
+                       via: 10.110.22.65
+                     - to: 10.152.144.0/24
+                       via: 10.110.22.65
+               ens192:
+                 addresses: [10.110.23.252/26]
+                 routes:
+                    #REMOTES_on_MONITORING
+                     - to: 10.110.23.192/26
+                       via: 10.110.23.193
+                     - to: 10.152.144.0/24
+                       via: 10.110.23.193    
+     
+
+

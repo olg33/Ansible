@@ -1,0 +1,10 @@
+-
+  name: Copy Files to target servers
+  hosts: all
+  tasks:
+    - name: Copy File
+      copy:
+        src: /home/oscar/Ansible/file.txt
+        dest: /home/administrator/file.txt
+
+

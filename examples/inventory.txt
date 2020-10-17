@@ -1,0 +1,4 @@
+target1 ansible_host=administrator@10.200.8.22 ansible_ssh_pass=oeIP2019!
+target2 ansible_host=administrator@10.200.8.19 ansible_ssh_pass=oeIP2019!
+target3 ansible_host=10.200.9.12 ansible_connection=ssh ansible_user=administrator ansible_ssh_pass=oeIP2019!
+target4 ansible_host=10.200.8.26 ansible_ssh_pass=mtn33025

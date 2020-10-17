@@ -1,0 +1,17 @@
+
+---
+# IP Addresses of <Teleport Name>
+IP_Add_Native: 10.1.1.1/26
+IP_Add_GW_Native: 
+
+IP_Add_MTNMGT_Local: 
+IP_Add_MTNMGT_Sub:
+IP_Add_MTNMGT_GW: 
+
+IP_Add_MONITORING_Local:
+IP_Add_MONITORING_Sub:
+IP_Add_MONITORING_GW:
+
+IP_Add_INTPUB_Local:
+IP_Add_INTPUB_Sub:
+IP_Add_INTPUB_GW:

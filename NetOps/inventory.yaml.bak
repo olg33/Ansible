@@ -1,0 +1,264 @@
+
+---
+all:
+  hosts:
+
+    BWT_BKP_A:
+        ansible_connection: ssh
+        ansible_host: "10.200.8.19"
+        ansible_user: administrator
+        ansible_ssh_pass: oeIP2019!
+    
+    BWT_BKP_B:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.22"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!   
+    
+    BWT_BKP_C:
+      ansible_connection: ssh
+      ansible_host: "10.200.9.12"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    
+    ELK_UB_20:
+      ansible_connection: ssh
+      ansible_host: "10.200.8.26"
+      ansible_user: clem
+      ansible_ssh_pass: mtn33025
+      ansible_sudo_pass: mtn33025
+  #
+  #TELEPORTS
+  #
+  # ATLANTA, GA 
+    BWT_ATL_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.128.122"
+      ansible_user: administrator
+      
+      ansible_ssh_pass: oeIP2019! 
+
+    ENK_ATL_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.128.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024  
+
+
+  # BREWSTER, WA
+    BWT_BRW_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.156.121"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+
+    BWT_BRW_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.156.249"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+
+    ENK_BRW_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.156.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024 
+
+    ENK_BRW_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.156.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024  
+
+
+  # FUCHSSTADT, GERMANY  
+    BWT_FUC_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.128.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+
+    ENK_FUC_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.128.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024  
+
+  # HOLMDEL, NJ
+    BWT_HOL_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.130.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    
+    BW_HOL_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.130.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+
+    BWT_HOL_03:
+      ansible_connection: ssh
+      ansible_host: "172.20.132.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    
+    BWT_HOL_04:
+      ansible_connection: ssh
+      ansible_host: "172.20.132.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    
+    BWT_HOL_05:
+      ansible_connection: ssh
+      ansible_host: "172.20.134.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+    
+    BWT_HOL_06:
+      ansible_connection: ssh
+      ansible_host: "172.20.134.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+
+    ENK_HOL_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.130.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024
+    
+    ENK_HOL_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.130.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024 
+
+    ENK_HOL_03:
+      ansible_connection: ssh
+      ansible_host: "172.20.132.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024
+    
+    ENK_HOL_04:
+      ansible_connection: ssh
+      ansible_host: "172.20.132.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024
+    
+    ENK_HOL_05:
+      ansible_connection: ssh
+      ansible_host: "172.20.134.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024
+    
+    ENK_HOL_06:
+      ansible_connection: ssh
+      ansible_host: "172.20.134.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024 
+
+
+    # HAWAII 
+    BWT_HTP_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.136.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!
+      
+    ENK_HTP_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.136.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024   
+
+
+    # NAPA VALLEY, CA
+    BWT_NAPA_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.154.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+
+    ENK_NAPA_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.154.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024
+
+
+    # NITTEDAL, NORWAY
+    BWT_NIT_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.140.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+
+    ENK_NIT_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.140.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024  
+
+
+    # RAISTING, GERMANY
+    BWT_RAI_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.142.122"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    
+    BWT_RAI_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.142.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!   
+
+    BWT_RAI_03:
+      ansible_connection: ssh
+      ansible_host: "172.20.144.120"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+    
+    BWT_RAI_04:
+      ansible_connection: ssh
+      ansible_host: "172.20.154.120"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019!  
+
+    ENK_RAI_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.142.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024
+    
+    ENK_RAI_02:
+      ansible_connection: ssh
+      ansible_host: "172.20.142.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024   
+
+    ENK_RAI_03:
+      ansible_connection: ssh
+      ansible_host: "172.20.144.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024  
+    
+    ENK_RAI_04:
+      ansible_connection: ssh
+      ansible_host: "172.20.154.123"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024    
+
+
+    #SYDNEY, AUSTRALIA
+    BWT_SYD_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.152.250"
+      ansible_user: administrator
+      ansible_ssh_pass: oeIP2019! 
+
+    ENK_SYD_01:
+      ansible_connection: ssh
+      ansible_host: "172.20.152.251"
+      ansible_user: administrator
+      ansible_ssh_pass: mtn33024 

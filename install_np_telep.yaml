@@ -1,0 +1,104 @@
+-
+ name: Migration to Netplan
+ ###### PARAM 1
+ hosts: BW_Test_Vessel_BRW_02
+ ###### PARAM 2
+ vars_files:
+    - /home/oscar/Ansible/Variables/Var_BRW_02.yaml 
+ vars:
+  ansible_python_interpreter: /usr/bin/python3
+ tasks:
+    # - name: Installing Netplan
+    #   become: true
+    #   become_user: root
+    #   apt:
+    #     name: netplan.io
+    #     state: present
+    #     update_cache: true 
+
+     - name: Change Mode
+       become: true
+       become_user: root
+       file:
+        path: /etc/netplan
+        mode: '0777'    
+
+     - name: Removing default 01-network-manager-all.yaml
+       file:
+         path: /etc/netplan/01-network-manager-all.yaml
+         state: absent
+
+     - name: Creating new Netplan File
+       copy:
+         dest: "/etc/netplan/01-network-manager-all.yaml"
+         content: |
+               # Vessel's NAME 
+               network:
+                 version: 2
+                 renderer: networkd
+                 ethernets:
+                   ens160:
+                     dhcp4: no
+                     dhcp6: no
+                     addresses: [{{ IP_Add_Native }}]
+                     gateway4: {{ IP_Add_GW_Native }}
+                     nameservers:
+                       addresses: [216.7.159.133,8.8.8.8]
+                   ens256:
+                     addresses: [{{ IP_Add_MTNMGT_Local }}]
+                     routes:
+                        #MTNMGT_LOCAL
+                      - to: {{ IP_Add_MTNMGT_Sub }}
+                        via: {{ IP_Add_MTNMGT_GW }}
+                        #MTNMGT_REMOTES
+                      
+                   ens224:
+                     addresses: [{{ IP_Add_MONITORING_Local }}]
+                     routes:
+                        #MONITORING_LOCAL
+                      - to: {{ IP_Add_MONITORING_Sub }}
+                        via: {{ IP_Add_MONITORING_GW }}
+                        #MONITORING_REMOTES
+               
+                   ens192:
+                     addresses: [{{ IP_Add_INTPUB_Local }}]
+                     routes:
+                        #INTPUB_LOCAL
+                      - to: {{ IP_Add_INTPUB_Sub }}
+                        via: {{ IP_Add_INTPUB_GW }}
+                        #INTPUB_REMOTES
+                          
+     - name: Generating/Applying netplan
+       become: true
+       become_user: root
+       raw: /usr/sbin/netplan {{ item }}
+       with_items:
+         - generate
+         - apply
+  
+     - name: Removing old IP File System
+       become: true
+       become_user: root
+       apt:
+         name: ifupdown
+         state: absent
+         purge: yes
+
+     - name: Change Mode
+       become: true
+       become_user: root
+       file:
+        path: /etc/network/interfaces
+        mode: '0777'
+
+     - name: Backup file
+       become: true
+       become_user: root 
+       command: mv /etc/network/interfaces /etc/network/interfaces.bak
+
+     - name: Rebooting....
+       become: true
+       become_user: root
+       reboot:
+
+  

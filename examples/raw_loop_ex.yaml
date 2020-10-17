@@ -1,0 +1,11 @@
+-
+ name: Command Test
+ hosts: VMs_Server_C
+ tasks:
+     - name: Generating Netplan
+       become: true
+       become_user: root
+       raw: /usr/sbin/netplan {{ item }}
+       with_items:
+         - generate
+         - apply

@@ -1,0 +1,34 @@
+
+-
+ name: Variable_Reading_Test
+ hosts: Laptop_VM_A
+ vars_files:
+    - /home/oscar/Ansible/variables.yaml 
+ vars:
+  ansible_python_interpreter: /usr/bin/python3
+
+ tasks:
+     - name: Subdirectory Change Mode
+       #become: true
+       #become_user: root
+       file:
+        path: /etc/netplan
+        mode: '0777'    
+
+     - name: Adding IP Address to netplan file
+       #become: true
+       #become_user: root
+       blockinfile:
+          path: /etc/netplan/01-network-manager-all.yaml 
+          insertafter: "dhcp6:"
+          marker: "#Native Interface Section"
+          block: |1   
+                 addresses: [{{ IP_Address_Native }}]
+                 #gateway4: 172.20.136.129
+                 #nameservers:
+                    #addresses: [216.7.159.133,8.8.8.8]
+       #copy:
+         #dest: "/etc/netplan/VarTest.yaml"
+         #content: |
+               # Test
+               #addresses: [{{ IP_Address1 }}]

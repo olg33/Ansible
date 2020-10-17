@@ -1,0 +1,39 @@
+---
+all:
+  children:
+    MIR_Lab:
+      children:
+        Ubuntu_18:
+          hosts:
+            mir.01.bwt:
+              ansible_host: "10.200.8.19"
+            mir.02.bwt:
+              ansible_host: "10.200.8.22"   
+            mir.03.bwt:
+              ansible_host: "10.200.9.12"
+            mir.04.bwt:
+              ansible_host: "10.200.9.13"    
+          vars:
+            ansible_connection: ssh
+            ansible_user: administrator
+            ansible_ssh_pass: oeIP2019!
+            ansible_sudo_pass: oeIP2019! 
+
+        Ubuntu_20:
+          hosts:
+            mir.05.u20:
+              ansible_connection: ssh
+              ansible_host: "10.200.8.26"
+              ansible_user: clem
+              ansible_ssh_pass: mtn33025
+              ansible_sudo_pass: mtn33025
+  
+            hosts:
+            mir.enk.lab:
+              ansible_connection: ssh
+              ansible_host: "10.200.8.12"
+              ansible_user: administrator
+              ansible_ssh_pass: mtn33024
+              ansible_sudo_pass: mtn33024
+               
+         

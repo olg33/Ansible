@@ -1,0 +1,12 @@
+-
+ name: Migration to Netplan
+ hosts: VMs_Server_C
+ tasks:
+     -
+      name: 'Install Asterisk'
+      become: true
+      become_user: root
+      apt:
+        name: asterisk
+        state: present
+        update_cache: true

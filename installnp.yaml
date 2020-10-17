@@ -1,0 +1,100 @@
+-
+ name: Migration to Netplan
+ hosts: BW_Test_Teleport
+ vars:
+  ansible_python_interpreter: /usr/bin/python3
+ tasks:
+     - name: Installing Netplan
+       become: true
+       become_user: root
+       apt:
+         name: netplan.io
+         state: present
+         update_cache: true 
+
+     - name: Change Mode
+       become: true
+       become_user: root
+       file:
+        path: /etc/netplan
+        mode: '0777'    
+
+     - name: Removing default 01-network-manager-all.yaml
+       file:
+         path: /etc/netplan/01-network-manager-all.yaml
+         state: absent
+
+     - name: Creating new Netplan File
+       copy:
+         dest: "/etc/netplan/01-network-manager-all.yaml"
+         content: |
+               # Vessel's NAME 
+               network:
+                 version: 2
+                 renderer: networkd
+                 ethernets:
+                   ens160:
+                     dhcp4: true
+                     dhcp6: no
+                     #addresses: [172.20.1.2/25]
+                     #gateway4: 172.20.1.1
+                     #nameservers:
+                       #addresses: [216.7.159.133,8.8.8.8]
+                   ens256:
+                     addresses: [10.110.1.60/26]
+                     routes:
+                        #MTNMGT_LOCAL
+                      - to: 10.110.1.0/26
+                        via: 10.110.1.1
+                        #MTNMGT_REMOTES
+                      
+                   ens224:
+                     addresses: [10.110.2.124/26]
+                     routes:
+                        #MONITORING_LOCAL
+                      - to: 10.110.2.64/26
+                        via: 10.110.2.65
+                        #MONITORING_REMOTES
+               
+                   ens192:
+                     addresses: [10.110.3.252/26]
+                     routes:
+                        #INTPUB_LOCAL
+                      - to: 10.110.3.192/26
+                        via: 10.110.3.193
+                        #INTPUB_REMOTES
+                          
+     - name: Generating/Applying netplan
+       become: true
+       become_user: root
+       raw: /usr/sbin/netplan {{ item }}
+       with_items:
+         - generate
+         - apply
+  
+     - name: Removing old IP File System
+       become: true
+       become_user: root
+       apt:
+         name: ifupdown
+         state: absent
+         purge: yes
+
+     - name: Change Mode
+       become: true
+       become_user: root
+       file:
+        path: /etc/network/interfaces
+        mode: '0777'
+
+     - name: Backup file
+       become: true
+       become_user: root 
+       command: mv /etc/network/interfaces /etc/network/interfaces.bak
+
+     - name: Rebooting....
+       become: true
+       become_user: root
+       reboot:
+
+  
