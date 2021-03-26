@@ -1,6 +1,6 @@
 -
   name: Test connectivity
-  hosts: mir.01.bwt, mir.02.bwt, mir.05.u20
+  hosts: mir.02.enk
   vars:
    ansible_python_interpreter: /usr/bin/python3
   tasks:

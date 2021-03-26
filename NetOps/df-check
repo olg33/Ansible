@@ -1,0 +1,11 @@
+#!/bin/bash
+
+Name=$(hostname)
+current_usage=$( df -h | grep '/dev/sda5' | awk {'print $5'} )
+max_usage=80%
+
+if [ ${current_usage%?} -ge ${max_usage%?} ]; then
+    mailbody="Hard drive is running out of space at Virtual Machine ${Name}. Current usage: ${current_usage}."
+    echo ${mailbody} | mail -s "Hard Drive Usage Alert" oscar.lopez@globaleagle.com
+fi
+

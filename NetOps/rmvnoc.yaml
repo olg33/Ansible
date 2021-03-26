@@ -1,0 +1,15 @@
+-
+  name: Remove noc account
+  hosts: san.04.bwt, stn.01.bwt
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  
+  tasks:
+    - name: Removing NOC user account
+      become: true
+      become_user: root
+      user:
+        name: noc
+        state: absent
+
+

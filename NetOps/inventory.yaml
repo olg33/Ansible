@@ -12,7 +12,7 @@ all:
             mir.03.bwt:
               ansible_host: "10.200.9.12"
             mir.04.bwt:
-              ansible_host: "10.200.9.13"    
+              ansible_host: "10.200.9.13"      
           vars:
             ansible_connection: ssh
             ansible_user: administrator
@@ -20,20 +20,132 @@ all:
             ansible_sudo_pass: oeIP2019! 
 
         Ubuntu_20:
-          hosts:
-            mir.05.u20:
-              ansible_connection: ssh
-              ansible_host: "10.200.8.26"
-              ansible_user: clem
-              ansible_ssh_pass: mtn33025
-              ansible_sudo_pass: mtn33025
-  
-            hosts:
-            mir.enk.lab:
-              ansible_connection: ssh
+          hosts: 
+              
+            mir.02.enk:
               ansible_host: "10.200.8.12"
+          vars:
+              ansible_connection: ssh
               ansible_user: administrator
               ansible_ssh_pass: mtn33024
               ansible_sudo_pass: mtn33024
-               
+        
+        Ubuntu_NAP: 
+          hosts:
+            nap.01.bwt:
+              ansible_connection: ssh
+              ansible_host: "172.16.100.54"  
+              ansible_user: administrator
+              ansible_ssh_pass: Gl0b@l3agle$
+              ansible_sudo_pass: Gl0b@l3agle$              
+
+    Backbone_VMs:
+       children:
+        BWT_VMs:
+          hosts:
+            atl.01.bwt:
+              ansible_host: "172.20.128.122"
+            brw.01.bwt:
+              ansible_host: "172.20.156.121"   
+            brw.02.bwt:
+              ansible_host: "172.20.156.249"
+            fuc.01.bwt:
+              ansible_host: "172.20.128.250"   
+            hol.01.bwt:
+              ansible_host: "172.20.130.122"
+            hol.02.bwt:
+              ansible_host: "172.20.130.250"
+            hol.03.bwt:
+              ansible_host: "172.20.132.122"
+            hol.04.bwt:
+              ansible_host: "172.20.132.250"
+            hol.05.bwt:
+              ansible_host: "172.20.134.122"
+            hol.06.bwt:
+              ansible_host: "172.20.134.250" 
+            hpt.01.bwt:
+              ansible_host: "172.20.136.250"   
+            napa.01.bwt:
+              ansible_host: "172.20.154.250" 
+            nit.01.bwt:
+              ansible_host: "172.20.140.250"
+            rai.01.bwt:
+              ansible_host: "172.20.142.122"
+            rai.02.bwt:
+              ansible_host: "172.20.142.250" 
+            rai.03.bwt:
+              ansible_host: "172.20.144.122"
+            rai.04.bwt:
+              ansible_host: "172.20.154.122"
+            san.02.bwt:
+              ansible_host: "172.20.146.122"      
+            san.03.bwt:
+              ansible_host: "172.20.146.250"
+            san.04.bwt:
+              ansible_host: "172.20.148.122" 
+            stn.01.bwt:
+              ansible_host: "172.20.136.122"
+            syd.01.bwt:
+              ansible_host: "172.20.152.250"           
+          vars:
+            ansible_connection: ssh
+            ansible_user: administrator
+            ansible_ssh_pass: Gl0b@l3agle$
+            ansible_sudo_pass: Gl0b@l3agle$ 
+       
+        ENK_VMs:
+          hosts:
+            atl.01.enk:
+              ansible_host: "172.20.128.123"
+            brw.01.enk:
+              ansible_host: "172.20.156.123"   
+            brw.02.enk:
+              ansible_host: "172.20.156.251"
+            fuc.01.enk:
+              ansible_host: "172.20.128.251"   
+            hol.01.enk:
+              ansible_host: "172.20.130.123"
+            hol.02.enk:
+              ansible_host: "172.20.130.251"
+            hol.03.enk:
+              ansible_host: "172.20.132.123"
+            hol.04.enk:
+              ansible_host: "172.20.132.251"
+            hol.05.enk:
+              ansible_host: "172.20.134.123"
+            hol.06.enk:
+              ansible_host: "172.20.134.251" 
+            hpt.01.enk:
+              ansible_host: "172.20.136.251"   
+            napa.01.enk:
+              ansible_host: "172.20.154.251" 
+            nit.01.enk:
+              ansible_host: "172.20.140.251"
+            rai.01.enk:
+              ansible_host: "172.20.142.123"
+            rai.02.enk:
+              ansible_host: "172.20.142.251" 
+            rai.03.enk:
+              ansible_host: "172.20.144.123"
+            rai.04.enk:
+              ansible_host: "172.20.154.123"
+            rai.05.enk:
+              ansible_host: "172.20.152.123" 
+            san.01.enk:
+              ansible_host: "172.20.144.251" 
+            san.02.enk:
+              ansible_host: "172.20.146.123"      
+            san.03.enk:
+              ansible_host: "172.20.146.251"
+            san.04.enk:
+              ansible_host: "172.20.148.123" 
+            stn.01.enk:
+              ansible_host: "172.20.136.123"
+            syd.01.enk:
+              ansible_host: "172.20.152.251"           
+          vars:
+            ansible_connection: ssh
+            ansible_user: administrator
+            ansible_ssh_pass: Gl0b@l3agle$
+            ansible_sudo_pass: Gl0b@l3agle$ 
          

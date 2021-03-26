@@ -1,0 +1,16 @@
+-
+  name: Remote Password Change 
+  hosts: rai.05.enk, san.01.enk
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+   password: Gl0b@l3agle$
+  tasks:
+    - name: Changing User Password
+      become: true
+      become_user: root
+      user:
+        name: administrator
+        update_password: always
+        password: "{{ password | password_hash('sha512') }}"
+
+

@@ -1,0 +1,35 @@
+-
+  name: Copying Netdata Alarm Configuration File
+  hosts: rai.05.enk, san.01.enk
+  become: true
+  become_user: root
+  
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  
+  tasks:
+    - name: Accessing VM....
+      copy:
+        src: /home/devnet/Ansible/NetOps/net.conf
+        dest: /usr/lib/netdata/conf.d/health.d/net.conf
+        remote_src: no
+        owner: root
+        group: root
+        backup: yes
+
+    - name: Restarting Netdata....
+      ansible.builtin.systemd:
+        name: netdata
+        state: restarted
+
+
+    
+
+
+  
+ 
+  
+
+
+
+  

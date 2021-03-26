@@ -1,0 +1,37 @@
+-
+  name: Installing Sentinel Agent on Remote VMs
+  hosts: stn.01.enk, syd.01.enk
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Reaching server, please wait....
+      become: true
+      become_user: root   
+      copy:
+        src: /home/devnet/ftp/SentinelAgent_linux_v4_4_2_3.deb
+        dest: /home/administrator/ftp/SentinelAgent_linux_v4_4_2_3.deb
+
+    - name: Installing Agent
+      become: true
+      become_user: root
+#      apt: 
+#        deb: /home/administrator/ftp/SentinelAgent_linux_v4_4_2_3.deb  
+      shell: dpkg -i /home/administrator/ftp/SentinelAgent_linux_v4_4_2_3.deb
+
+    - name: Starting Agent
+      become: true
+      become_user: root
+      shell: /opt/sentinelone/bin/sentinelctl control start
+
+    - name: Writing UUID File....
+      become: true
+      become_user: root
+      shell: /opt/sentinelone/bin/sentinelctl management uuid get > /home/administrator/Documents/$(hostname)-sentinelone-uuid.txt  
+
+    - name: Removing installation files
+      file:
+        path: /home/administrator/ftp/SentinelAgent_linux_v4_4_2_3.deb      
+        state: absent
+
+
+

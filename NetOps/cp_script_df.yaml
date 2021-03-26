@@ -1,0 +1,30 @@
+-
+  name: Copying df script to ENK VMs
+  hosts: rai.01.enk, brw.01.enk, hol.06.enk, rai.04.enk
+  become: true
+  become_user: root
+  
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  
+  tasks:
+    - name: Accessing VM....
+      copy:
+        src: /home/devnet/Ansible/NetOps/df-check
+        dest: /etc/cron.daily/df-check
+        remote_src: no
+        owner: root
+        group: root
+        mode: 0755
+        backup: yes
+
+    
+
+
+  
+ 
+  
+
+
+
+  
