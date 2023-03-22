@@ -1,0 +1,37 @@
+-
+  name: Installing Webmin
+  hosts: stn.01.bwt, syd.01.bwt
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Downloading Webmin from web site, please wait....
+      become: true
+      become_user: root
+      get_url:
+        url: https://sourceforge.net/projects/webadmin/files/webmin/1.981/webmin_1.981_all.deb
+        dest: /home/administrator/Downloads
+        mode: 0664
+        group: administrator
+        owner: administrator
+
+    - name: Installing Perl....
+      become: true
+      become_user: root
+      apt:
+        name: perl
+        state: fixed
+        #update_cache: yes
+
+    - name: Autoremoving file....
+      become: true
+      become_user: root
+      apt:
+        autoremove: yes
+            
+    - name: Installing Webmin 1.981....
+      become: true
+      become_user: root      
+      apt:
+        deb: /home/administrator/Downloads/webmin_1.981_all.deb
+      

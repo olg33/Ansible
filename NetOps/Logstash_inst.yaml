@@ -1,0 +1,16 @@
+-
+  name: Installing Logstash
+  hosts: mir.01.enk   
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Downloading Logstash from web site, please wait....
+      become: true
+      become_user: root
+      shell:
+         "curl -o logstash-7.13.4-amd64.deb https://artifacts.elastic.co/downloads/logstash/logstash-7.13.4-amd64.deb"
+      
+    
+    
+

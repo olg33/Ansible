@@ -1,0 +1,50 @@
+-
+  name: Upgrading Logstash
+  
+  hosts: syd.01.enk
+
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Installing Elastic_Key Please wait ...
+      become: true
+      become_user: root
+      apt_key:
+        url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+        state: present
+      become: true  
+
+    - name: Installing apt-transport-https
+      become: true
+      become_user: root
+      apt:
+        name: apt-transport-https
+        state: present
+        update_cache: true
+
+    - name: Adding repository
+      become: true
+      become_user: root
+      shell: echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+    
+    - name: Installing Logstash 7.16.2
+      become: true
+      become_user: root
+      apt:
+        name: logstash
+        state: latest
+        update_cache: true          
+    
+    - name: Removing the JndiLookup class from the log4j2 core jar
+      become: true
+      become_user: root
+      shell: zip -q -d /usr/share/logstash/logstash-core/**/*/log4j-core-2.* org/apache/logging/log4j/core/lookup/JndiLookup.class
+      
+    - name: Rebooting, please wait....
+      become: true
+      become_user: root
+      reboot:
+
+    - name: Server is up again! Pinging server......
+      ping:   

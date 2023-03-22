@@ -1,0 +1,27 @@
+-
+  name: Installing new Speedtester
+  hosts: hpt.01.bwt, per.01.bwt, stn.01.bwt, syd.01.bwt   
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Copying script, please wait....
+      become: true
+      become_user: root
+      ansible.builtin.copy:
+        src: /home/devnet/ftp/sptupg.sh
+        dest: /var/www/sptupg.sh
+        owner: root
+        group: root
+        mode: '0777' 
+
+    - name: Running script, please wait....
+      become: true
+      become_user: root
+      shell:
+         "./sptupg.sh"
+      args:
+        chdir: "/var/www"
+    
+    
+

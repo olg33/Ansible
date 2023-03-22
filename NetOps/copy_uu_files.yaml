@@ -1,0 +1,59 @@
+-
+  name: Upgrading Remote VMs
+  hosts: atl.01.bwt, atl.02.bwt, brw.01.bwt, brw.02.bwt, hol.01.bwt, hol.02.bwt, 
+         hol.03.bwt, hol.04.bwt, hol.05.bwt, hol.06.bwt, hpt.01.bwt,
+         mad.01.bwt, napa.01.bwt, nit.01.bwt, per.01.bwt, rai.01.bwt, rai.02.bwt,
+         rai.03.bwt, rai.04.bwt, rai.05.bwt, rai.06.bwt, rai.07.bwt, stn.01.bwt, 
+         syd.01.bwt
+
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Copying File 20 auto-upgrades
+      become: true
+      become_user: root
+      copy:
+        src: /etc/apt/apt.conf.d/20auto-upgrades
+        dest: /etc/apt/apt.conf.d/20auto-upgrades
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Copying File 10 Periodic
+      become: true
+      become_user: root
+      copy:
+        src: /etc/apt/apt.conf.d/10periodic
+        dest: /etc/apt/apt.conf.d/10periodic
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Copying File 50 unattended-upgrades
+      become: true
+      become_user: root
+      copy:
+        src: /etc/apt/apt.conf.d/50unattended-upgrades
+        dest: /etc/apt/apt.conf.d/50unattended-upgrades
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Stop unattended Upgrades 
+      become: true
+      become_user: root
+      ansible.builtin.systemd:
+        name: unattended-upgrades
+        state: stopped
+
+    - name: Start unattended Upgrades 
+      become: true
+      become_user: root
+      ansible.builtin.systemd:
+        name: unattended-upgrades
+        state: started
+
+  
+
+       
+

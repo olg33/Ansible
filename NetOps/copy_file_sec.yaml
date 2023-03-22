@@ -1,0 +1,25 @@
+-
+  name: Upgrading Remote VMs
+  hosts: atl.02.bwt, brw.01.bwt, brw.02.bwt, hol.01.bwt, hol.02.bwt, 
+         hol.03.bwt, hol.04.bwt, hol.05.bwt, hol.06.bwt, hol.07.bwt, hpt.01.bwt,
+         mad.01.bwt, napa.01.bwt, nit.01.bwt, per.01.bwt, rai.01.bwt, rai.02.bwt,
+         rai.03.bwt, rai.04.bwt, rai.05.bwt, rai.06.bwt, rai.07.bwt, stn.01.bwt, 
+         syd.01.bwt
+
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Copying File  /etc/cron.daily/secupdate
+      become: true
+      become_user: root
+      copy:
+        src:  /etc/cron.daily/secupdate
+        dest: /etc/cron.daily/secupdate
+        owner: root
+        group: root
+        mode: 0755
+
+  
+
+       
+

@@ -1,0 +1,27 @@
+-
+  name: Installing New Ubuntu logo
+  hosts: syd.01.enk
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+
+  tasks: 
+    - name: Copying new logo...
+      become: true
+      become_user: root 
+      copy:
+        src: /home/devnet/Downloads/anuvu-logo-metal.svg
+        dest: /usr/share/netdata/web/
+        owner: netdata 
+        group: netdata
+        mode: 0664
+
+    - name: Copying second new logo...
+      become: true
+      become_user: root 
+      copy:
+        src: /home/devnet/Downloads/anuvu-logo-white.png
+        dest: /usr/share/netdata/web/
+        owner: netdata 
+        group: netdata
+        mode: 0664
+  

@@ -1,8 +1,10 @@
 -
   name: Upgrading Remote VMs
-  hosts: rai.05.enk
+  hosts: hol.06.enk, atl.02.enk, rai.05.enk, hol.03.enk, brw.02.enk, hol.01.enk,
+         hol.02.enk         
   vars:
    ansible_python_interpreter: /usr/bin/python3
+  
   tasks:
     - name: Rebooting, please wait....
       become: true

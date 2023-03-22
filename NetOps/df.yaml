@@ -1,13 +1,13 @@
 -
   name: Verifying disk usage on VMs
-  hosts: hol.06.enk
+  hosts: rai.01.enk
   vars:
    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Accessing VM....
       become: true
       become_user: root
-      command: df -t ext4
+      command: df -ht ext4
       register: dfv
 
     - debug: msg="{{ dfv.stdout }}"

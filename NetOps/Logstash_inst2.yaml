@@ -1,0 +1,57 @@
+-
+  name: Installing Logstash
+  hosts: rai.05.enk, per.01.enk, rai.05.bwt, nit.01.bwt, syd.01.bwt, rai.03.bwt,
+         htp.01.bwt, stn.01.bwt   
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Downloading Logstash from web site, please wait....
+      become: true
+      become_user: root
+      get_url:
+        url: https://artifacts.elastic.co/downloads/logstash/logstash-7.13.4-amd64.deb
+        dest: /home/administrator/Downloads
+        mode: 0664
+        group: administrator
+        owner: administrator
+
+    - name: Installing Logstash 7.13.4....
+      become: true
+      become_user: root      
+      apt:
+        deb: /home/administrator/Downloads/logstash-7.13.4-amd64.deb
+      
+    - name: Installing cisco.conf file....
+      become: true
+      become_user: root 
+      copy:
+        src: /home/devnet/Downloads/cisco.conf
+        dest: /etc/logstash/conf.d/cisco.conf
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: Upgrading Logstash Plugins
+      become: true
+      become_user: root
+      shell:
+         "/usr/share/logstash/bin/logstash-plugin update" 
+
+    - name: Installing Codec sflow 
+      become: true
+      become_user: root
+      shell:
+         "/usr/share/logstash/bin/logstash-plugin install logstash-codec-sflow"         
+         
+    - name: Starting Logstash 
+      become: true
+      become_user: root
+      shell:
+         "systemctl start logstash"
+
+    - name: Enabling Logstash for auto-start 
+      become: true
+      become_user: root
+      shell:
+         "systemctl enable logstash"
